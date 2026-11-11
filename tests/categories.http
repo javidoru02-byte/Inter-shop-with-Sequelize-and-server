@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:3000/api/categories
+
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/2
+
+###
+# @name createCategory
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Smartwatches",
+  "description": "Wearable devices"
+}
+
+###
+PATCH {{baseUrl}}/{{createCategory.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "description": "Smart watches and fitness trackers"
+}
+
+###
+DELETE {{baseUrl}}/{{createCategory.response.body.data.id}}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "description": "no title"
+}
+
+###
+DELETE {{baseUrl}}/1

@@ -1,0 +1,53 @@
+@baseUrl = http://localhost:3000/api/orders
+
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/by-statuses?statuses=paid,shipped
+
+###
+GET {{baseUrl}}/1
+
+###
+# @name createOrder
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 5,
+  "items": [
+    { "productId": 1, "quantity": 2 },
+    { "productId": 39, "quantity": 1 }
+  ]
+}
+
+###
+PATCH {{baseUrl}}/{{createOrder.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "status": "paid"
+}
+
+###
+DELETE {{baseUrl}}/{{createOrder.response.body.data.id}}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 5,
+  "status": "lost",
+  "items": []
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 5,
+  "items": [{ "productId": 9999 }]
+}

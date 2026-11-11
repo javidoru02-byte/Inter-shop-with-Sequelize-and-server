@@ -1,0 +1,130 @@
+@baseUrl = http://localhost:3000/api/customers
+
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/id-greater
+
+###
+GET {{baseUrl}}/id-greater?value=15
+
+###
+GET {{baseUrl}}/by-last-names?lastNames=Melnyk,Boiko,Moroz
+
+###
+GET {{baseUrl}}/1
+
+###
+# @name createCustomer
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "firstName": "Petro",
+  "lastName": "Ivanenko",
+  "email": "Petro.Ivanenko@Example.com",
+  "password": "secret123",
+  "phone": "+380509998877"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "firstName": "Halyna",
+  "lastName": "Sydorenko",
+  "email": "halyna.sydorenko@example.com",
+  "password": "qwerty123"
+}
+
+###
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "petro.ivanenko@example.com",
+  "password": "secret123"
+}
+
+###
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "petro.ivanenko@example.com",
+  "password": "wrong-password"
+}
+
+###
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "olena.kovalenko@example.com",
+  "password": "Password1!"
+}
+
+###
+PATCH {{baseUrl}}/{{createCustomer.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "phone": "+380671234567",
+  "password": "newSecret456"
+}
+
+###
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "petro.ivanenko@example.com",
+  "password": "newSecret456"
+}
+
+###
+DELETE {{baseUrl}}
+Content-Type: application/json
+
+{
+  "emails": ["petro.ivanenko@example.com", "halyna.sydorenko@example.com"]
+}
+
+###
+GET {{baseUrl}}/top-buyer
+
+###
+GET {{baseUrl}}/most-expensive-purchase
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "firstName": "Bad",
+  "lastName": "Email",
+  "email": "not-an-email",
+  "password": "secret123"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "firstName": "Olena",
+  "lastName": "Copy",
+  "email": "olena.kovalenko@example.com",
+  "password": "secret123"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "email": "short@example.com",
+  "password": "123"
+}

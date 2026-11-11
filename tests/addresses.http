@@ -1,0 +1,53 @@
+@baseUrl = http://localhost:3000/api/addresses
+
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}/1
+
+###
+# @name createAddress
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 19,
+  "country": "Ukraine",
+  "city": "Chernihiv",
+  "street": "Myru Ave, 5",
+  "zip": "14000"
+}
+
+###
+PATCH {{baseUrl}}/{{createAddress.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "street": "Myru Ave, 7"
+}
+
+###
+DELETE {{baseUrl}}/{{createAddress.response.body.data.id}}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "country": "Ukraine",
+  "city": "Kyiv",
+  "street": "Any St, 1"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "customerId": 9999,
+  "country": "Ukraine",
+  "city": "Kyiv",
+  "street": "Any St, 1"
+}

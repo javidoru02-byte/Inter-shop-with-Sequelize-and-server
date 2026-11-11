@@ -1,0 +1,77 @@
+@baseUrl = http://localhost:3000/api/brands
+
+###
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}?limit=10&offset=10
+
+###
+GET {{baseUrl}}/id-greater
+
+###
+GET {{baseUrl}}/id-greater?value=9
+
+###
+GET {{baseUrl}}/by-titles?titles=Samsung,Dell,Xiaomi
+
+###
+GET {{baseUrl}}/1
+
+###
+# @name createBrand
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Nokia",
+  "country": "Finland",
+  "description": "Smartphones and network equipment"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Motorola",
+  "country": "USA"
+}
+
+###
+PATCH {{baseUrl}}/{{createBrand.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "description": "Finnish brand of phones"
+}
+
+###
+DELETE {{baseUrl}}
+Content-Type: application/json
+
+{
+  "titles": ["Nokia", "Motorola"]
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "country": "Nowhere"
+}
+
+###
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Samsung"
+}
+
+###
+GET {{baseUrl}}/9999
+
+###
+GET {{baseUrl}}/abc
