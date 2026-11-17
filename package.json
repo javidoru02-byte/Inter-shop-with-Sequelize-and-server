@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "db:setup": "node src/scripts/setup.js",
     "db:create": "sequelize db:create",
     "db:drop": "sequelize db:drop",
     "migrate": "sequelize db:migrate",
@@ -30,5 +31,8 @@
   "devDependencies": {
     "nodemon": "^3.1.14",
     "sequelize-cli": "^6.6.5"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
