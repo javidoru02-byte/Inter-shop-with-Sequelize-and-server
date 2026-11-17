@@ -42,7 +42,7 @@ const connect = async (database) => {
     } else {
       runCli("db:seed:all");
     }
-    console.log("\nDone. Start the server: npm start");
+    console.log("Database is ready");
   } catch (error) {
     if (error.status !== undefined) process.exit(1);
     console.error(`\nSetup failed: ${error.message}\nHint: ${dbHint(error)}`);

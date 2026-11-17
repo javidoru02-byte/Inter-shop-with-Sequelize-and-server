@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "prestart": "node src/scripts/setup.js",
     "start": "node src/index.js",
+    "predev": "node src/scripts/setup.js",
     "dev": "nodemon src/index.js",
     "db:setup": "node src/scripts/setup.js",
     "db:create": "sequelize db:create",
